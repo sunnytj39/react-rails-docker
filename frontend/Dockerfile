@@ -1,6 +1,7 @@
 FROM node:7.9.0
 
 WORKDIR /app
+COPY ./webpack.config.js /app/webpack.config.js
 
 RUN npm init -y
 RUN npm install --save react react-dom

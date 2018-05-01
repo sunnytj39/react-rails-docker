@@ -12,7 +12,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./frontend:/app
+      - ./frontend/src:/app/src
+      - ./frontend/dist:/app/dist
     command: /app/node_modules/.bin/webpack-dev-server --hot
   web:
     build: .
