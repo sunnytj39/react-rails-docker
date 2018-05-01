@@ -1,0 +1,46 @@
+version: '3'
+
+volumes:
+  store:
+    driver: local
+  bundle:
+    driver: local
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app
+    command: /app/node_modules/.bin/webpack-dev-server --hot
+  web:
+    build: .
+    ports:
+      - 3001:3001
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+    links:
+      - db
+      - frontend
+    stdin_open: true
+    tty: true
+    command: bin/rails s -p 3001 -b 0.0.0.0
+    environment: &app_env
+      PORT: 3000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: rails_docker_database
+      DB_USER: postgres
+      DB_PSWD: postgres
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    volumes:
+      - store:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rails_docker_database
