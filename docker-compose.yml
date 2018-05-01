@@ -27,9 +27,9 @@ services:
       - frontend
     stdin_open: true
     tty: true
-    command: bin/rails s -p 3001 -b 0.0.0.0
+    command: ./scripts/backend.sh
     environment: &app_env
-      PORT: 3000
+      PORT: 3001
       DB_HOST: db
       DB_PORT: 5432
       DB_NAME: rails_docker_database
