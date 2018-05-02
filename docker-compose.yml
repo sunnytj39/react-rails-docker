@@ -15,6 +15,8 @@ services:
       - ./frontend/src:/app/src
       - ./frontend/dist:/app/dist
     command: /app/node_modules/.bin/webpack-dev-server --hot
+    links:
+      - web
   web:
     build: .
     ports:
@@ -24,7 +26,6 @@ services:
       - bundle:/usr/local/bundle
     links:
       - db
-      - frontend
     stdin_open: true
     tty: true
     command: ./scripts/backend.sh
