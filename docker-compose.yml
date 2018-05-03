@@ -7,6 +7,12 @@ volumes:
     driver: local
 
 services:
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:8080
+    volumes:
+      - ./frontend/dist:/wwwroot:ro
   frontend:
     build: ./frontend
     ports:
@@ -14,7 +20,6 @@ services:
     volumes:
       - ./frontend/src:/app/src
       - ./frontend/dist:/app/dist
-    command: /app/node_modules/.bin/webpack-dev-server --hot
     links:
       - web
   web:

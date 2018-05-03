@@ -12,12 +12,16 @@ class App extends React.Component {
   }
 
   handlePost() {
-    fetch('http://web:3001/users', {
+    const header = new Headers({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    });
+    fetch('http://0.0.0.0:3001/users', {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
+      mode: 'cors',
+      header: header,
       body: JSON.stringify({
         user: {
           name: this.state.textValue,
@@ -33,8 +37,18 @@ class App extends React.Component {
   }
 
   handleGet() {
-    fetch('http://web:3001/users'
+    const header = new Headers({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    });
+    fetch('http://0.0.0.0:3001/users', {
+      header: header,
+      mode: 'cors',
+    }
     ).then((res) => {
+      console.log(res);
         res.json()
       }).then((json) => {
         console.log(json);
