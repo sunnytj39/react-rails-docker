@@ -2,7 +2,7 @@
 
 `$ docker-compose up`
 
-React: http://localhost:3000
+React: http://localhost:8080
 
 Rails: http://localhost:3001
 
