@@ -10,13 +10,15 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - 80:8080
+      - 8080:8080
+    expose:
+      - "8080"
     volumes:
       - ./frontend/dist:/wwwroot:ro
+    links:
+      - web
   frontend:
     build: ./frontend
-    ports:
-      - 3000:3000
     volumes:
       - ./frontend/src:/app/src
       - ./frontend/dist:/app/dist
@@ -26,6 +28,8 @@ services:
     build: .
     ports:
       - 3001:3001
+    expose:
+      - "3001"
     volumes:
       - .:/app
       - bundle:/usr/local/bundle

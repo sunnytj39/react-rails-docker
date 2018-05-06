@@ -12,23 +12,18 @@ class App extends React.Component {
   }
 
   handlePost() {
-    const header = new Headers({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept',
+      console.log(JSON.stringify({user: {'name': 'hoge'}}));
+     const header = new Headers({
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     });
-    fetch('http://0.0.0.0:3001/users', {
+    fetch('http://localhost:3001/users', {
       method: 'POST',
       mode: 'cors',
       header: header,
-      body: JSON.stringify({
-        user: {
-          name: this.state.textValue,
-        }
-      })
+      body: JSON.stringify({user: {'name': 'hoge'}}),
     }).then((res) => {
-        res.json()
+        return res.json();
       }).then((json) => {
         console.log(json);
       }).catch((err) => {
@@ -37,24 +32,17 @@ class App extends React.Component {
   }
 
   handleGet() {
-    const header = new Headers({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept',
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    });
-    fetch('http://0.0.0.0:3001/users', {
-      header: header,
+    fetch('http://localhost:3001/users', {
       mode: 'cors',
-    }
-    ).then((res) => {
-      console.log(res);
-        res.json()
-      }).then((json) => {
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
         console.log(json);
       }).catch((err) => {
         console.error(err);
-      })
+      });
   }
 
   changeText(e) {
