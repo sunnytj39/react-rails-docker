@@ -9,6 +9,7 @@ class App extends React.Component {
     };
     this.changeText = this.changeText.bind(this);
     this.handlePost = this.handlePost.bind(this);
+    this.handleGet = this.handleGet.bind(this);
   }
 
   handlePost() {
@@ -39,6 +40,7 @@ class App extends React.Component {
       })
       .then(json => {
         console.log(json);
+        this.setState({users: json});
       }).catch((err) => {
         console.error(err);
       });
@@ -59,7 +61,10 @@ class App extends React.Component {
           GET
         </button>
         <div>
-          Users:{this.state.users}
+          Users:
+          {this.state.users.map(function(index) {
+            return <li key={index.id}>{index.name}</li>;
+          })}
         </div>
       </div>
     )

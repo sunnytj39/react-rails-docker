@@ -3027,3 +3027,53 @@ Processing by UsersController#index as */*
 Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/users" for 172.18.0.1 at 2018-05-07 09:10:44 +0000
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8
+Completed 200 OK in 37ms (Views: 9.5ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/users" for 172.18.0.1 at 2018-05-07 09:19:02 +0000
+Processing by UsersController#index as */*
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8
+Completed 200 OK in 11ms (Views: 7.9ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users" for 172.18.0.1 at 2018-05-07 09:19:11 +0000
+Processing by UsersController#create as */*
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:21
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "name") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2018-05-07 09:19:11.188979"], ["updated_at", "2018-05-07 09:19:11.188979"], ["name", "hogehoge"]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:21
+Completed 201 Created in 16ms (Views: 1.0ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/users" for 172.18.0.1 at 2018-05-07 09:19:12 +0000
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users" for 172.18.0.1 at 2018-05-07 09:19:22 +0000
+Processing by UsersController#create as */*
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:21
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "name") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2018-05-07 09:19:22.476395"], ["updated_at", "2018-05-07 09:19:22.476395"], ["name", "aiueo"]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:21
+Completed 201 Created in 14ms (Views: 0.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/users" for 172.18.0.1 at 2018-05-07 09:19:23 +0000
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.8ms)
+
+
