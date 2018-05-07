@@ -12,7 +12,6 @@ class App extends React.Component {
   }
 
   handlePost() {
-      console.log(JSON.stringify({user: {'name': 'hoge'}}));
      const header = new Headers({
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -21,7 +20,7 @@ class App extends React.Component {
       method: 'POST',
       mode: 'cors',
       header: header,
-      body: JSON.stringify({user: {'name': 'hoge'}}),
+      body: JSON.stringify({'user': {'name': this.state.textValue}}),
     }).then((res) => {
         return res.json();
       }).then((json) => {

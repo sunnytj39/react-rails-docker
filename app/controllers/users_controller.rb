@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
+    json_request = JSON.parse(request.body.read)
+    @user = User.new(name: json_request['user']['name'].to_s)
 
     if @user.save
       render json: @user, status: :created, location: @user
