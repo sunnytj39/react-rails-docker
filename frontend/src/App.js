@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   handleGet() {
-    fetch('http://localhost:3001/users', {
+    fetch(`http://localhost:3001/users`, {
       mode: 'cors',
     })
       .then(response => {
@@ -63,7 +63,7 @@ class App extends React.Component {
         <div>
           Users:
           {this.state.users.map(function(index) {
-            return <li key={index.id}>{index.name}</li>;
+            return <li key={index.id}>id: {index.id}, name: {index.name}</li>;
           })}
         </div>
       </div>
